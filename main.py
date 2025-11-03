@@ -40,6 +40,10 @@ class UserLogin(BaseModel):
     email: EmailStr
     password: str
 
+class UserUpdate(BaseModel):
+    username: Optional[str] = None
+    preferences: Optional[List[str]] = None
+
 class Product(BaseModel):
     name: str
     description: str
@@ -122,30 +126,41 @@ def get_user_profile(user_id: str):
     
 # Update User Profile
 @app.put("/api/users/{user_id}")
-def update_user_profile(user_id: str, username: Optional[str] = None, preferences: Optional[List[str]] = None):
+def update_user_profile(user_id: str, update_data: UserUpdate):
+    """Update user profile (username and preferences)"""
     try:
         user = users_collection.find_one({"_id": ObjectId(user_id)})
         if not user:
             raise HTTPException(status_code=404, detail="User not found")
         
-        update_data = {}
-        if username:
-            # Check if username already taken
-            existing = users_collection.find_one({"username": username, "_id": {"$ne": ObjectId(user_id)}})
+        update_fields = {}
+        
+        # Update username if provided
+        if update_data.username is not None and update_data.username.strip():
+            # Check if username already taken by another user
+            existing = users_collection.find_one({
+                "username": update_data.username,
+                "_id": {"$ne": ObjectId(user_id)}
+            })
             if existing:
                 raise HTTPException(status_code=400, detail="Username already taken")
-            update_data["username"] = username
+            update_fields["username"] = update_data.username.strip()
         
-        if preferences is not None:
-            update_data["preferences"] = preferences
+        # Update preferences if provided
+        if update_data.preferences is not None:
+            update_fields["preferences"] = update_data.preferences
         
-        if update_data:
-            update_data["updated_at"] = datetime.utcnow()
+        # Update timestamp
+        update_fields["updated_at"] = datetime.utcnow()
+        
+        # Perform update
+        if update_fields:
             users_collection.update_one(
                 {"_id": ObjectId(user_id)},
-                {"$set": update_data}
+                {"$set": update_fields}
             )
         
+        # Return updated user
         updated_user = users_collection.find_one({"_id": ObjectId(user_id)})
         updated_user["_id"] = str(updated_user["_id"])
         updated_user.pop("password_hash", None)
@@ -157,8 +172,8 @@ def update_user_profile(user_id: str, username: Optional[str] = None, preference
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    
+        raise HTTPException(status_code=500, detail=f"Error updating profile: {str(e)}")
+        
 # Get User History (all interactions with details)
 @app.get("/api/users/{user_id}/history")
 def get_user_history(user_id: str, interaction_type: Optional[str] = None):

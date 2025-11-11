@@ -102,12 +102,15 @@ def generate_reset_token() -> str:
 
 def send_reset_email(email: str, token: str):
     """Симуляция отправки email"""
-    reset_link = f"http://localhost:3000/reset-password?token={token}"
+    reset_link = f"http://127.0.0.1:5500/index.html?token={token}"
     print(f"\n{'='*60}")
     print(f"PASSWORD RESET EMAIL")
     print(f"To: {email}")
     print(f"Reset Link: {reset_link}")
     print(f"Token: {token}")
+    print(f"{'='*60}\n")
+    print(f"\n🔗 COPY THIS LINK:")
+    print(f"{reset_link}")
     print(f"{'='*60}\n")
     # В продакшене используйте SMTP для реальной отправки
 
@@ -154,7 +157,8 @@ def login_user(credentials: UserLogin):
     return {
         "message": "Login successful",
         "user_id": str(user["_id"]),
-        "username": user["username"]
+        "username": user["username"],
+        "is_admin": user.get("is_admin", False)  # ← ДОБАВИТЬ ЭТУ СТРОКУ
     }
 
 # Get User Profile

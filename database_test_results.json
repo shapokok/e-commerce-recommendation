@@ -1,0 +1,159 @@
+{
+  "integrity_tests": [
+    {
+      "test": "Orphaned user interactions",
+      "status": "PASSED",
+      "orphaned_count": 0
+    },
+    {
+      "test": "Orphaned product interactions",
+      "status": "PASSED",
+      "orphaned_count": 0
+    },
+    {
+      "test": "Duplicate user emails",
+      "status": "PASSED",
+      "duplicate_count": 0
+    },
+    {
+      "test": "Valid interaction types",
+      "status": "PASSED",
+      "invalid_count": 0
+    },
+    {
+      "test": "Valid rating values",
+      "status": "PASSED",
+      "invalid_count": 0
+    }
+  ],
+  "performance_tests": [
+    {
+      "test": "Find user by email",
+      "time_ms": 159.96456146240234,
+      "performance": "slow"
+    },
+    {
+      "test": "Find products by category",
+      "time_ms": 171.16856575012207,
+      "result_count": 5,
+      "performance": "slow"
+    },
+    {
+      "test": "Count user interactions",
+      "time_ms": 176.8808364868164,
+      "result_count": 25,
+      "performance": "slow"
+    },
+    {
+      "test": "Aggregate popular products",
+      "time_ms": 186.5699291229248,
+      "result_count": 10,
+      "performance": "good"
+    },
+    {
+      "test": "Text search",
+      "time_ms": 155.54141998291016,
+      "result_count": 1,
+      "performance": "good"
+    }
+  ],
+  "index_tests": [
+    {
+      "collection": "users",
+      "index_count": 2,
+      "indexes": [
+        {
+          "name": "_id_",
+          "keys": [
+            "_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "email_1",
+          "keys": [
+            "email"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    {
+      "collection": "products",
+      "index_count": 4,
+      "indexes": [
+        {
+          "name": "_id_",
+          "keys": [
+            "_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "category_1",
+          "keys": [
+            "category"
+          ],
+          "unique": false
+        },
+        {
+          "name": "price_1",
+          "keys": [
+            "price"
+          ],
+          "unique": false
+        },
+        {
+          "name": "name_text_description_text",
+          "keys": [
+            "_fts",
+            "_ftsx"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    {
+      "collection": "interactions",
+      "index_count": 4,
+      "indexes": [
+        {
+          "name": "_id_",
+          "keys": [
+            "_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "user_id_1",
+          "keys": [
+            "user_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "product_id_1",
+          "keys": [
+            "product_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "user_id_1_product_id_1",
+          "keys": [
+            "user_id",
+            "product_id"
+          ],
+          "unique": false
+        }
+      ]
+    }
+  ],
+  "query_optimization": [],
+  "crud_tests": {
+    "create": "passed",
+    "read": "passed",
+    "update": "passed",
+    "delete": "passed"
+  }
+}

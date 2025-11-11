@@ -1,0 +1,124 @@
+{
+  "collaborative_filtering": {
+    "method": "collaborative",
+    "average_precision": 0.0,
+    "average_recall": 0.0,
+    "average_f1_score": 0.0,
+    "individual_results": [
+      {
+        "user": "Alison",
+        "user_id": "690629382343d986ba193d13",
+        "recommended_count": 10,
+        "relevant_count": 8,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      {
+        "user": "bob",
+        "user_id": "690629392343d986ba193d14",
+        "recommended_count": 10,
+        "relevant_count": 5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      {
+        "user": "charlie",
+        "user_id": "690629392343d986ba193d15",
+        "recommended_count": 10,
+        "relevant_count": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      {
+        "user": "diana",
+        "user_id": "6906293a2343d986ba193d16",
+        "recommended_count": 10,
+        "relevant_count": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      }
+    ]
+  },
+  "content_based": {
+    "method": "content",
+    "average_precision": 0.0,
+    "average_recall": 0.0,
+    "average_f1_score": 0.0,
+    "individual_results": [
+      {
+        "user": "Alison",
+        "user_id": "690629382343d986ba193d13",
+        "recommended_count": 3,
+        "relevant_count": 8,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      {
+        "user": "bob",
+        "user_id": "690629392343d986ba193d14",
+        "recommended_count": 4,
+        "relevant_count": 5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      {
+        "user": "charlie",
+        "user_id": "690629392343d986ba193d15",
+        "recommended_count": 3,
+        "relevant_count": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      {
+        "user": "diana",
+        "user_id": "6906293a2343d986ba193d16",
+        "recommended_count": 5,
+        "relevant_count": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      }
+    ]
+  },
+  "diversity": {
+    "average_diversity": 0.575,
+    "individual_results": [
+      {
+        "user": "Alison",
+        "total_recommendations": 10,
+        "unique_categories": 5,
+        "diversity_score": 0.5
+      },
+      {
+        "user": "bob",
+        "total_recommendations": 10,
+        "unique_categories": 6,
+        "diversity_score": 0.6
+      },
+      {
+        "user": "charlie",
+        "total_recommendations": 10,
+        "unique_categories": 6,
+        "diversity_score": 0.6
+      },
+      {
+        "user": "diana",
+        "total_recommendations": 10,
+        "unique_categories": 6,
+        "diversity_score": 0.6
+      }
+    ]
+  },
+  "coverage": {
+    "total_products": 25,
+    "recommended_products": 21,
+    "coverage_percentage": 84.0
+  }
+}

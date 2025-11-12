@@ -1,106 +1,117 @@
 {
   "collaborative_filtering": {
     "method": "collaborative",
-    "average_precision": 0.0,
-    "average_recall": 0.0,
-    "average_f1_score": 0.0,
+    "average_precision": 0.6,
+    "average_recall": 0.4230769230769231,
+    "average_f1_score": 0.4949832775919733,
+    "average_hit_rate": 1.0,
+    "average_precision_liked": 0.3,
+    "average_recall_liked": 0.4185185185185185,
+    "average_f1_liked": 0.34488304093567246,
     "individual_results": [
       {
-        "user": "Alison",
-        "user_id": "690629382343d986ba193d13",
+        "user": "alice_updated_1762905380.078933",
+        "user_id": "6913abc24f29131bb6068504",
         "recommended_count": 10,
-        "relevant_count": 8,
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1_score": 0.0
-      },
-      {
-        "user": "bob",
-        "user_id": "690629392343d986ba193d14",
-        "recommended_count": 10,
-        "relevant_count": 5,
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1_score": 0.0
+        "relevant_count": 13,
+        "liked_count": 6,
+        "precision": 0.5,
+        "recall": 0.38461538461538464,
+        "f1_score": 0.4347826086956522,
+        "precision_liked_only": 0.3,
+        "recall_liked_only": 0.5,
+        "f1_score_liked_only": 0.37499999999999994,
+        "hit_rate": 1.0
       },
       {
         "user": "charlie",
-        "user_id": "690629392343d986ba193d15",
+        "user_id": "6913abc44f29131bb6068506",
         "recommended_count": 10,
-        "relevant_count": 4,
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1_score": 0.0
+        "relevant_count": 13,
+        "liked_count": 5,
+        "precision": 0.5,
+        "recall": 0.38461538461538464,
+        "f1_score": 0.4347826086956522,
+        "precision_liked_only": 0.1,
+        "recall_liked_only": 0.2,
+        "f1_score_liked_only": 0.13333333333333333,
+        "hit_rate": 1.0
       },
       {
         "user": "diana",
-        "user_id": "6906293a2343d986ba193d16",
+        "user_id": "6913abc44f29131bb6068507",
         "recommended_count": 10,
-        "relevant_count": 3,
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1_score": 0.0
+        "relevant_count": 16,
+        "liked_count": 9,
+        "precision": 0.8,
+        "recall": 0.5,
+        "f1_score": 0.6153846153846154,
+        "precision_liked_only": 0.5,
+        "recall_liked_only": 0.5555555555555556,
+        "f1_score_liked_only": 0.5263157894736842,
+        "hit_rate": 1.0
       }
     ]
   },
   "content_based": {
     "method": "content",
-    "average_precision": 0.0,
-    "average_recall": 0.0,
-    "average_f1_score": 0.0,
+    "average_precision": 0.06666666666666667,
+    "average_recall": 0.046474358974358976,
+    "average_f1_score": 0.054626532887402456,
+    "average_hit_rate": 0.6666666666666666,
     "individual_results": [
       {
-        "user": "Alison",
-        "user_id": "690629382343d986ba193d13",
-        "recommended_count": 3,
-        "relevant_count": 8,
+        "user": "alice_updated_1762905380.078933",
+        "user_id": "6913abc24f29131bb6068504",
+        "recommended_count": 10,
+        "relevant_count": 13,
+        "liked_count": 6,
         "precision": 0.0,
         "recall": 0.0,
-        "f1_score": 0.0
-      },
-      {
-        "user": "bob",
-        "user_id": "690629392343d986ba193d14",
-        "recommended_count": 4,
-        "relevant_count": 5,
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1_score": 0.0
+        "f1_score": 0.0,
+        "precision_liked_only": 0.0,
+        "recall_liked_only": 0.0,
+        "f1_score_liked_only": 0.0,
+        "hit_rate": 0.0
       },
       {
         "user": "charlie",
-        "user_id": "690629392343d986ba193d15",
-        "recommended_count": 3,
-        "relevant_count": 4,
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1_score": 0.0
+        "user_id": "6913abc44f29131bb6068506",
+        "recommended_count": 10,
+        "relevant_count": 13,
+        "liked_count": 5,
+        "precision": 0.1,
+        "recall": 0.07692307692307693,
+        "f1_score": 0.08695652173913043,
+        "precision_liked_only": 0.1,
+        "recall_liked_only": 0.2,
+        "f1_score_liked_only": 0.13333333333333333,
+        "hit_rate": 1.0
       },
       {
         "user": "diana",
-        "user_id": "6906293a2343d986ba193d16",
-        "recommended_count": 5,
-        "relevant_count": 3,
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1_score": 0.0
+        "user_id": "6913abc44f29131bb6068507",
+        "recommended_count": 10,
+        "relevant_count": 16,
+        "liked_count": 9,
+        "precision": 0.1,
+        "recall": 0.0625,
+        "f1_score": 0.07692307692307693,
+        "precision_liked_only": 0.1,
+        "recall_liked_only": 0.1111111111111111,
+        "f1_score_liked_only": 0.10526315789473685,
+        "hit_rate": 1.0
       }
     ]
   },
   "diversity": {
-    "average_diversity": 0.575,
+    "average_diversity": 0.6666666666666666,
     "individual_results": [
       {
-        "user": "Alison",
+        "user": "alice_updated_1762905380.078933",
         "total_recommendations": 10,
-        "unique_categories": 5,
-        "diversity_score": 0.5
-      },
-      {
-        "user": "bob",
-        "total_recommendations": 10,
-        "unique_categories": 6,
-        "diversity_score": 0.6
+        "unique_categories": 7,
+        "diversity_score": 0.7
       },
       {
         "user": "charlie",
@@ -111,14 +122,14 @@
       {
         "user": "diana",
         "total_recommendations": 10,
-        "unique_categories": 6,
-        "diversity_score": 0.6
+        "unique_categories": 7,
+        "diversity_score": 0.7
       }
     ]
   },
   "coverage": {
-    "total_products": 25,
-    "recommended_products": 21,
-    "coverage_percentage": 84.0
+    "total_products": 50,
+    "recommended_products": 20,
+    "coverage_percentage": 40.0
   }
 }

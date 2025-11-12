@@ -7,8 +7,8 @@
     },
     {
       "test": "Orphaned product interactions",
-      "status": "PASSED",
-      "orphaned_count": 0
+      "status": "FAILED",
+      "orphaned_count": 1
     },
     {
       "test": "Duplicate user emails",
@@ -29,30 +29,30 @@
   "performance_tests": [
     {
       "test": "Find user by email",
-      "time_ms": 159.96456146240234,
+      "time_ms": 156.51416778564453,
       "performance": "slow"
     },
     {
       "test": "Find products by category",
-      "time_ms": 171.16856575012207,
-      "result_count": 5,
+      "time_ms": 156.22353553771973,
+      "result_count": 6,
       "performance": "slow"
     },
     {
       "test": "Count user interactions",
-      "time_ms": 176.8808364868164,
-      "result_count": 25,
+      "time_ms": 155.01952171325684,
+      "result_count": 10,
       "performance": "slow"
     },
     {
       "test": "Aggregate popular products",
-      "time_ms": 186.5699291229248,
+      "time_ms": 154.8001766204834,
       "result_count": 10,
       "performance": "good"
     },
     {
       "test": "Text search",
-      "time_ms": 155.54141998291016,
+      "time_ms": 156.13389015197754,
       "result_count": 1,
       "performance": "good"
     }

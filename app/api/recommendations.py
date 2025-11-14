@@ -9,16 +9,13 @@ Key Strategy: MMR (Maximal Marginal Relevance) for diversity
 """
 
 from fastapi import APIRouter, HTTPException, Query
-from pymongo import MongoClient
 from bson import ObjectId
-from typing import List, Dict, Tuple
+from typing import List, Dict
 from collections import Counter, defaultdict
 from datetime import datetime
-import math
 
 # Import shared MongoDB connection from database module
-# This ensures we use the same connection pool across the entire app
-from database import db, client
+from app.database import db
 print("[OPTIMIZATION] recommendation_routes using shared MongoDB connection pool")
 
 router = APIRouter()
@@ -627,3 +624,4 @@ def get_recommendations(
 
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
+

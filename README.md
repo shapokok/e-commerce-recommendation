@@ -40,13 +40,50 @@ This project implements a complete e-commerce platform with a personalized recom
 ```
 ecommerce-recommendation/
 │
-├── main.py                    # FastAPI application
-├── recommendations.py         # Recommendation engine
-├── recommendation_routes.py   # API routes for recommendations
-├── seed_data.py              # Database seeding script
-├── requirements.txt          # Python dependencies
-├── index.html                # Frontend application
+├── app/                       # Main application package
+│   ├── __init__.py
+│   ├── main.py               # FastAPI application setup
+│   ├── database.py           # MongoDB connection and collections
+│   │
+│   ├── api/                  # API routes organized by domain
+│   │   ├── __init__.py
+│   │   ├── auth.py           # Authentication routes
+│   │   ├── users.py          # User management routes
+│   │   ├── products.py       # Product routes
+│   │   ├── cart.py           # Shopping cart routes
+│   │   ├── orders.py         # Order routes
+│   │   ├── admin.py          # Admin routes
+│   │   └── recommendations.py # Recommendation routes
+│   │
+│   ├── models/               # Pydantic models and schemas
+│   │   ├── __init__.py
+│   │   └── schemas.py        # Request/response models
+│   │
+│   └── services/             # Business logic layer
+│       ├── __init__.py
+│       └── auth.py           # Authentication utilities
 │
+├── tests/                    # Test files
+│   ├── t1_test_case_table_generator.py
+│   ├── t2_generate_test_case_report.py
+│   ├── t3_*.py               # Load testing files
+│   ├── t4_test_database_complete.py
+│   └── t5_test_recommendation_quality*.py
+│
+├── scripts/                  # Utility scripts
+│
+├── static/                   # Frontend files
+│   └── index.html
+│
+├── data/                     # JSON data files
+│   ├── users.json
+│   ├── products.json
+│   ├── interactions.json
+│   ├── carts.json
+│   └── orders.json
+│
+├── main.py                   # Application entry point
+├── requirements.txt          # Python dependencies
 └── README.md                 # This file
 ```
 
@@ -93,7 +130,7 @@ python main.py
 
 Or using uvicorn directly:
 ```bash
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 The API will be available at: `http://localhost:8000`
@@ -101,7 +138,7 @@ API Documentation: `http://localhost:8000/docs`
 
 ### Step 5: Open Frontend
 
-Open `index.html` in your web browser. The frontend will connect to the backend API.
+Open `static/index.html` in your web browser. The frontend will connect to the backend API.
 
 **Test Credentials:**
 - Email: `alice@example.com` | Password: `password123`

@@ -1,0 +1,261 @@
+[
+  {
+    "_id": "6913abc74f29131bb606850c",
+    "name": "Laptop Pro 15",
+    "description": "High-performance laptop for professionals",
+    "category": "Electronics",
+    "price": 1299.99,
+    "stock_quantity": 15,
+    "image_url": "https://via.placeholder.com/300x300?text=Laptop",
+    "created_at": "2025-11-11T21:33:59.585000"
+  },
+  {
+    "_id": "6913abc74f29131bb606850d",
+    "name": "Smartphone X",
+    "description": "Latest smartphone with amazing camera",
+    "category": "Electronics",
+    "price": 899.99,
+    "stock_quantity": 25,
+    "image_url": "https://via.placeholder.com/300x300?text=Phone",
+    "created_at": "2025-11-11T21:33:59.745000"
+  },
+  {
+    "_id": "6913abc74f29131bb606850e",
+    "name": "Wireless Headphones",
+    "description": "Noise-cancelling wireless headphones",
+    "category": "Electronics",
+    "price": 249.99,
+    "stock_quantity": 49,
+    "image_url": "https://via.placeholder.com/300x300?text=Headphones",
+    "created_at": "2025-11-11T21:33:59.903000"
+  },
+  {
+    "_id": "6913abc84f29131bb606850f",
+    "name": "Smart Watch",
+    "description": "Fitness tracking smartwatch",
+    "category": "Electronics",
+    "price": 399.99,
+    "stock_quantity": 29,
+    "image_url": "https://via.placeholder.com/300x300?text=Watch",
+    "created_at": "2025-11-11T21:34:00.062000"
+  },
+  {
+    "_id": "6913abc84f29131bb6068510",
+    "name": "Tablet 10\"",
+    "description": "Portable tablet for work and play",
+    "category": "Electronics",
+    "price": 499.99,
+    "stock_quantity": 20,
+    "image_url": "https://via.placeholder.com/300x300?text=Tablet",
+    "created_at": "2025-11-11T21:34:00.221000"
+  },
+  {
+    "_id": "6913abc84f29131bb6068511",
+    "name": "Python Programming Guide",
+    "description": "Complete guide to Python programming",
+    "category": "Books",
+    "price": 49.99,
+    "stock_quantity": 99,
+    "image_url": "https://via.placeholder.com/300x300?text=Python+Book",
+    "created_at": "2025-11-11T21:34:00.381000"
+  },
+  {
+    "_id": "6913abc84f29131bb6068512",
+    "name": "Data Science Handbook",
+    "description": "Master data science techniques",
+    "category": "Books",
+    "price": 59.99,
+    "stock_quantity": 75,
+    "image_url": "https://via.placeholder.com/300x300?text=Data+Science",
+    "created_at": "2025-11-11T21:34:00.538000"
+  },
+  {
+    "_id": "6913abc84f29131bb6068513",
+    "name": "Machine Learning Basics",
+    "description": "Introduction to ML algorithms",
+    "category": "Books",
+    "price": 44.99,
+    "stock_quantity": 80,
+    "image_url": "https://via.placeholder.com/300x300?text=ML+Book",
+    "created_at": "2025-11-11T21:34:00.697000"
+  },
+  {
+    "_id": "6913abc84f29131bb6068514",
+    "name": "Web Development 101",
+    "description": "Learn modern web development",
+    "category": "Books",
+    "price": 39.99,
+    "stock_quantity": 90,
+    "image_url": "https://via.placeholder.com/300x300?text=Web+Dev",
+    "created_at": "2025-11-11T21:34:00.857000"
+  },
+  {
+    "_id": "6913abc94f29131bb6068515",
+    "name": "Cotton T-Shirt",
+    "description": "Comfortable cotton t-shirt",
+    "category": "Clothing",
+    "price": 24.99,
+    "stock_quantity": 200,
+    "image_url": "https://via.placeholder.com/300x300?text=T-Shirt",
+    "created_at": "2025-11-11T21:34:01.017000"
+  },
+  {
+    "_id": "6913abc94f29131bb6068516",
+    "name": "Denim Jeans",
+    "description": "Classic blue denim jeans",
+    "category": "Clothing",
+    "price": 59.99,
+    "stock_quantity": 150,
+    "image_url": "https://via.placeholder.com/300x300?text=Jeans",
+    "created_at": "2025-11-11T21:34:01.178000"
+  },
+  {
+    "_id": "6913abc94f29131bb6068517",
+    "name": "Winter Jacket",
+    "description": "Warm winter jacket",
+    "category": "Clothing",
+    "price": 129.99,
+    "stock_quantity": 40,
+    "image_url": "https://via.placeholder.com/300x300?text=Jacket",
+    "created_at": "2025-11-11T21:34:01.339000"
+  },
+  {
+    "_id": "6913abc94f29131bb6068518",
+    "name": "Running Shoes",
+    "description": "Lightweight running shoes",
+    "category": "Clothing",
+    "price": 89.99,
+    "stock_quantity": 60,
+    "image_url": "https://via.placeholder.com/300x300?text=Shoes",
+    "created_at": "2025-11-11T21:34:01.498000"
+  },
+  {
+    "_id": "6913abc94f29131bb6068519",
+    "name": "Yoga Mat",
+    "description": "Non-slip yoga mat",
+    "category": "Sports",
+    "price": 29.99,
+    "stock_quantity": 100,
+    "image_url": "https://via.placeholder.com/300x300?text=Yoga+Mat",
+    "created_at": "2025-11-11T21:34:01.655000"
+  },
+  {
+    "_id": "6913abc94f29131bb606851a",
+    "name": "Dumbbell Set",
+    "description": "Adjustable dumbbell set",
+    "category": "Sports",
+    "price": 149.99,
+    "stock_quantity": 35,
+    "image_url": "https://via.placeholder.com/300x300?text=Dumbbells",
+    "created_at": "2025-11-11T21:34:01.815000"
+  },
+  {
+    "_id": "6913abc94f29131bb606851b",
+    "name": "Basketball",
+    "description": "Official size basketball",
+    "category": "Sports",
+    "price": 34.99,
+    "stock_quantity": 75,
+    "image_url": "https://via.placeholder.com/300x300?text=Basketball",
+    "created_at": "2025-11-11T21:34:01.978000"
+  },
+  {
+    "_id": "6913abca4f29131bb606851c",
+    "name": "Tennis Racket",
+    "description": "Professional tennis racket",
+    "category": "Sports",
+    "price": 119.99,
+    "stock_quantity": 25,
+    "image_url": "https://via.placeholder.com/300x300?text=Racket",
+    "created_at": "2025-11-11T21:34:02.138000"
+  },
+  {
+    "_id": "6913abca4f29131bb606851d",
+    "name": "Coffee Maker",
+    "description": "Automatic coffee maker",
+    "category": "Home & Garden",
+    "price": 79.99,
+    "stock_quantity": 45,
+    "image_url": "https://via.placeholder.com/300x300?text=Coffee",
+    "created_at": "2025-11-11T21:34:02.305000"
+  },
+  {
+    "_id": "6913abca4f29131bb606851e",
+    "name": "Plant Pot Set",
+    "description": "Set of ceramic plant pots",
+    "category": "Home & Garden",
+    "price": 39.99,
+    "stock_quantity": 80,
+    "image_url": "https://via.placeholder.com/300x300?text=Pots",
+    "created_at": "2025-11-11T21:34:02.471000"
+  },
+  {
+    "_id": "6913abca4f29131bb606851f",
+    "name": "LED Desk Lamp",
+    "description": "Adjustable LED desk lamp",
+    "category": "Home & Garden",
+    "price": 49.99,
+    "stock_quantity": 55,
+    "image_url": "https://via.placeholder.com/300x300?text=Lamp",
+    "created_at": "2025-11-11T21:34:02.633000"
+  },
+  {
+    "_id": "6913abca4f29131bb6068520",
+    "name": "Facial Cream",
+    "description": "Moisturizing facial cream",
+    "category": "Beauty",
+    "price": 34.99,
+    "stock_quantity": 120,
+    "image_url": "https://via.placeholder.com/300x300?text=Cream",
+    "created_at": "2025-11-11T21:34:02.796000"
+  },
+  {
+    "_id": "6913abca4f29131bb6068521",
+    "name": "Makeup Kit",
+    "description": "Complete makeup kit",
+    "category": "Beauty",
+    "price": 89.99,
+    "stock_quantity": 40,
+    "image_url": "https://via.placeholder.com/300x300?text=Makeup",
+    "created_at": "2025-11-11T21:34:02.958000"
+  },
+  {
+    "_id": "6913abcb4f29131bb6068522",
+    "name": "Hair Dryer",
+    "description": "Professional hair dryer",
+    "category": "Beauty",
+    "price": 69.99,
+    "stock_quantity": 30,
+    "image_url": "https://via.placeholder.com/300x300?text=Dryer",
+    "created_at": "2025-11-11T21:34:03.120000"
+  },
+  {
+    "_id": "6913abcb4f29131bb6068523",
+    "name": "Building Blocks Set",
+    "description": "Creative building blocks",
+    "category": "Toys",
+    "price": 44.99,
+    "stock_quantity": 65,
+    "image_url": "https://via.placeholder.com/300x300?text=Blocks",
+    "created_at": "2025-11-11T21:34:03.281000"
+  },
+  {
+    "_id": "6913abcb4f29131bb6068524",
+    "name": "Board Game Collection",
+    "description": "Family board game",
+    "category": "Toys",
+    "price": 29.99,
+    "stock_quantity": 90,
+    "image_url": "https://via.placeholder.com/300x300?text=Game",
+    "created_at": "2025-11-11T21:34:03.442000"
+  },
+  {
+    "_id": "6913cd0f58cadccb2a4bc37f",
+    "name": "Test Product 1762905357.714119",
+    "description": "Test product for functional testing",
+    "category": "Electronics",
+    "price": 99.99,
+    "image_url": "https://via.placeholder.com/300",
+    "created_at": "2025-11-11T23:55:59.750000"
+  }
+]

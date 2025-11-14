@@ -1,0 +1,105 @@
+[
+  {
+    "_id": "6913abc24f29131bb6068503",
+    "username": "admin",
+    "email": "admin@eshop.com",
+    "password_hash": "$2b$12$/Acl8yL0cAjL.RF6nByF1u5Df2YZY7V7w0OSOtGKdthtvokjX8w2C",
+    "preferences": [
+      "Beauty",
+      "Sports"
+    ],
+    "is_admin": true,
+    "created_at": "2025-11-11T21:33:53.983000",
+    "updated_at": "2025-11-11T22:25:13.480000"
+  },
+  {
+    "_id": "6913abc24f29131bb6068504",
+    "username": "alice_updated_1762905380.078933",
+    "email": "alice@example.com",
+    "password_hash": "$2b$12$Dd0IentH1wUyDWnjr8UID.BBZxXA89DDvncrt0LjFQuaH6mMK72Ny",
+    "preferences": [
+      "Electronics",
+      "Books",
+      "Sports"
+    ],
+    "created_at": "2025-11-11T21:33:54.784000",
+    "updated_at": "2025-11-11T23:56:22.414000"
+  },
+  {
+    "_id": "6913abc34f29131bb6068505",
+    "username": "bob",
+    "email": "bob@example.com",
+    "password_hash": "$2b$12$DPzdoDOjoYGnb1rlRrtb1O23fPrZPb9JKqtKQiLtEGUFznUoPkdB2",
+    "preferences": [
+      "Clothing",
+      "Sports"
+    ],
+    "created_at": "2025-11-11T21:33:55.419000"
+  },
+  {
+    "_id": "6913abc44f29131bb6068506",
+    "username": "charlie",
+    "email": "charlie@example.com",
+    "password_hash": "$2b$12$ehdqZiSD9lKIeSfMm51BNOtVO3YVl1PEI.LLr6uNCoRG41Is7hr7e",
+    "preferences": [
+      "Home & Garden",
+      "Electronics"
+    ],
+    "created_at": "2025-11-11T21:33:56.055000"
+  },
+  {
+    "_id": "6913abc44f29131bb6068507",
+    "username": "diana",
+    "email": "diana@example.com",
+    "password_hash": "$2b$12$FzaMqeWsm6zHIggZVmPieuYps5mLOhzpOmn.JuFrSHBoauCmLYXxy",
+    "preferences": [
+      "Beauty",
+      "Clothing"
+    ],
+    "created_at": "2025-11-11T21:33:56.697000"
+  },
+  {
+    "_id": "6913abc54f29131bb6068508",
+    "username": "eve",
+    "email": "eve@example.com",
+    "password_hash": "$2b$12$fHvNcV1xUbxh0.Ukmqxx8ukLyk6Iq5B//QvhyA9syorBF18QrEPH6",
+    "preferences": [
+      "Books",
+      "Toys"
+    ],
+    "created_at": "2025-11-11T21:33:57.457000"
+  },
+  {
+    "_id": "6913abc64f29131bb6068509",
+    "username": "frank",
+    "email": "frank@example.com",
+    "password_hash": "$2b$12$luSwL7RKLdcJpyWkrd.VZ.8zo.ihh/hosJtRVkZn7tyfetK4/Y.Li",
+    "preferences": [
+      "Sports",
+      "Electronics"
+    ],
+    "created_at": "2025-11-11T21:33:58.103000"
+  },
+  {
+    "_id": "6913abc64f29131bb606850a",
+    "username": "grace",
+    "email": "grace@example.com",
+    "password_hash": "$2b$12$gfIoAJGZXakfIv7m.l/qeuwB5I89eslyyMX0d6HmDlBZRSt9QdI.S",
+    "preferences": [
+      "Beauty",
+      "Home & Garden"
+    ],
+    "created_at": "2025-11-11T21:33:58.764000"
+  },
+  {
+    "_id": "6913abc74f29131bb606850b",
+    "username": "henry",
+    "email": "henry@example.com",
+    "password_hash": "$2b$12$KzUWGxe8oVJGMLPxqO.lvO2MbQddGsa1.OVWYisE6pf1poy46JrRy",
+    "preferences": [
+      "Electronics",
+      "Sports"
+    ],
+    "created_at": "2025-11-11T21:33:59.423000"
+  }
+]

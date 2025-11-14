@@ -1,0 +1,1042 @@
+[
+  {
+    "_id": "6913abcb4f29131bb6068525",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abca4f29131bb606851c",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:03.604000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcb4f29131bb6068526",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc74f29131bb606850e",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:03.767000",
+    "rating": 5
+  },
+  {
+    "_id": "6913abcb4f29131bb6068527",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc94f29131bb606851a",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:03.933000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcc4f29131bb6068528",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc94f29131bb6068517",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:04.091000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcc4f29131bb6068529",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc84f29131bb6068513",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:04.248000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcc4f29131bb606852a",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc94f29131bb6068519",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:04.406000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcc4f29131bb606852b",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abca4f29131bb6068521",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:04.562000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcc4f29131bb606852c",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abc74f29131bb606850d",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:04.724000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcc4f29131bb606852d",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abc94f29131bb6068519",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:04.886000",
+    "rating": 4
+  },
+  {
+    "_id": "6913abcd4f29131bb606852e",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abcb4f29131bb6068522",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:05.046000",
+    "rating": 2
+  },
+  {
+    "_id": "6913abcd4f29131bb606852f",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abc94f29131bb6068515",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:05.206000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcd4f29131bb6068530",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abc94f29131bb6068516",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:05.366000",
+    "rating": 2
+  },
+  {
+    "_id": "6913abcd4f29131bb6068531",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abc84f29131bb6068512",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:05.523000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcd4f29131bb6068532",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abc74f29131bb606850c",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:05.685000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcd4f29131bb6068533",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abca4f29131bb606851d",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:05.842000",
+    "rating": 5
+  },
+  {
+    "_id": "6913abce4f29131bb6068534",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abcb4f29131bb6068523",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:06.002000",
+    "rating": null
+  },
+  {
+    "_id": "6913abce4f29131bb6068535",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abca4f29131bb606851f",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:06.163000",
+    "rating": 3
+  },
+  {
+    "_id": "6913abce4f29131bb6068536",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abc94f29131bb6068517",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:06.322000",
+    "rating": null
+  },
+  {
+    "_id": "6913abce4f29131bb6068537",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abc84f29131bb6068514",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:06.482000",
+    "rating": null
+  },
+  {
+    "_id": "6913abce4f29131bb6068538",
+    "user_id": "6913abc34f29131bb6068505",
+    "product_id": "6913abca4f29131bb6068520",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:06.643000",
+    "rating": 3
+  },
+  {
+    "_id": "6913abce4f29131bb6068539",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abca4f29131bb606851c",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:06.804000",
+    "rating": null
+  },
+  {
+    "_id": "6913abce4f29131bb606853a",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abcb4f29131bb6068523",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:06.964000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcf4f29131bb606853b",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc74f29131bb606850d",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:07.121000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcf4f29131bb606853c",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc94f29131bb606851b",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:07.281000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcf4f29131bb606853d",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc94f29131bb6068517",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:07.441000",
+    "rating": 2
+  },
+  {
+    "_id": "6913abcf4f29131bb606853e",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc84f29131bb6068513",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:07.600000",
+    "rating": null
+  },
+  {
+    "_id": "6913abcf4f29131bb606853f",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc84f29131bb6068510",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:07.758000",
+    "rating": 4
+  },
+  {
+    "_id": "6913abcf4f29131bb6068540",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc84f29131bb606850f",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:07.920000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd04f29131bb6068541",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc94f29131bb6068517",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:08.078000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd04f29131bb6068542",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc94f29131bb6068516",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:08.234000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd04f29131bb6068543",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc94f29131bb6068519",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:08.434000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd04f29131bb6068544",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc84f29131bb6068511",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:08.638000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd04f29131bb6068545",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abca4f29131bb606851f",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:08.844000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd14f29131bb6068546",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abcb4f29131bb6068524",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:09.048000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd14f29131bb6068547",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc74f29131bb606850c",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:09.216000",
+    "rating": 5
+  },
+  {
+    "_id": "6913abd14f29131bb6068548",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abca4f29131bb606851e",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:09.373000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd14f29131bb6068549",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc84f29131bb6068512",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:09.535000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd14f29131bb606854a",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc84f29131bb6068513",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:09.765000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd14f29131bb606854b",
+    "user_id": "6913abc54f29131bb6068508",
+    "product_id": "6913abc74f29131bb606850e",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:09.964000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd24f29131bb606854c",
+    "user_id": "6913abc54f29131bb6068508",
+    "product_id": "6913abcb4f29131bb6068523",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:10.175000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd24f29131bb606854d",
+    "user_id": "6913abc54f29131bb6068508",
+    "product_id": "6913abc94f29131bb6068519",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:10.334000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd24f29131bb606854e",
+    "user_id": "6913abc54f29131bb6068508",
+    "product_id": "6913abc74f29131bb606850c",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:10.492000",
+    "rating": 3
+  },
+  {
+    "_id": "6913abd24f29131bb606854f",
+    "user_id": "6913abc54f29131bb6068508",
+    "product_id": "6913abc84f29131bb606850f",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:10.687000",
+    "rating": 1
+  },
+  {
+    "_id": "6913abd24f29131bb6068550",
+    "user_id": "6913abc54f29131bb6068508",
+    "product_id": "6913abc94f29131bb606851a",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:10.891000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd34f29131bb6068551",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abca4f29131bb6068520",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:11.094000",
+    "rating": 5
+  },
+  {
+    "_id": "6913abd34f29131bb6068552",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abc84f29131bb6068512",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:11.301000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd34f29131bb6068553",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abca4f29131bb606851d",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:11.506000",
+    "rating": 3
+  },
+  {
+    "_id": "6913abd34f29131bb6068554",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abc94f29131bb6068515",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:11.710000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd34f29131bb6068555",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abcb4f29131bb6068524",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:11.915000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd44f29131bb6068556",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abc74f29131bb606850e",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:12.078000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd44f29131bb6068557",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abca4f29131bb606851c",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:12.234000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd44f29131bb6068558",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abc94f29131bb6068517",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:12.428000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd44f29131bb6068559",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abc74f29131bb606850d",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:12.632000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd44f29131bb606855a",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abc84f29131bb6068513",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:12.838000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd54f29131bb606855b",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abc84f29131bb6068514",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:13.043000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd54f29131bb606855c",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abc94f29131bb606851a",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:13.247000",
+    "rating": 1
+  },
+  {
+    "_id": "6913abd54f29131bb606855d",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abca4f29131bb606851e",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:13.451000",
+    "rating": 2
+  },
+  {
+    "_id": "6913abd54f29131bb606855e",
+    "user_id": "6913abc64f29131bb6068509",
+    "product_id": "6913abc94f29131bb6068519",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:13.656000",
+    "rating": 2
+  },
+  {
+    "_id": "6913abd54f29131bb606855f",
+    "user_id": "6913abc64f29131bb606850a",
+    "product_id": "6913abc84f29131bb6068512",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:13.859000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd64f29131bb6068560",
+    "user_id": "6913abc64f29131bb606850a",
+    "product_id": "6913abc74f29131bb606850c",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:14.077000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd64f29131bb6068561",
+    "user_id": "6913abc64f29131bb606850a",
+    "product_id": "6913abc94f29131bb6068517",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:14.271000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd64f29131bb6068562",
+    "user_id": "6913abc64f29131bb606850a",
+    "product_id": "6913abc94f29131bb6068516",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:14.430000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd64f29131bb6068563",
+    "user_id": "6913abc64f29131bb606850a",
+    "product_id": "6913abc84f29131bb6068513",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:14.587000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd64f29131bb6068564",
+    "user_id": "6913abc64f29131bb606850a",
+    "product_id": "6913abc84f29131bb606850f",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:14.783000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd64f29131bb6068565",
+    "user_id": "6913abc64f29131bb606850a",
+    "product_id": "6913abca4f29131bb6068520",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:14.988000",
+    "rating": 1
+  },
+  {
+    "_id": "6913abd74f29131bb6068566",
+    "user_id": "6913abc64f29131bb606850a",
+    "product_id": "6913abc94f29131bb6068515",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:15.182000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd74f29131bb6068567",
+    "user_id": "6913abc64f29131bb606850a",
+    "product_id": "6913abc74f29131bb606850e",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:15.397000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd74f29131bb6068568",
+    "user_id": "6913abc64f29131bb606850a",
+    "product_id": "6913abcb4f29131bb6068524",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:15.576000",
+    "rating": 2
+  },
+  {
+    "_id": "6913abd74f29131bb6068569",
+    "user_id": "6913abc64f29131bb606850a",
+    "product_id": "6913abca4f29131bb606851f",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:15.807000",
+    "rating": 4
+  },
+  {
+    "_id": "6913abd74f29131bb606856a",
+    "user_id": "6913abc74f29131bb606850b",
+    "product_id": "6913abca4f29131bb606851d",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:15.967000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd84f29131bb606856b",
+    "user_id": "6913abc74f29131bb606850b",
+    "product_id": "6913abca4f29131bb606851f",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:16.124000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd84f29131bb606856c",
+    "user_id": "6913abc74f29131bb606850b",
+    "product_id": "6913abc94f29131bb6068516",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:16.319000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd84f29131bb606856d",
+    "user_id": "6913abc74f29131bb606850b",
+    "product_id": "6913abc84f29131bb6068511",
+    "interaction_type": "rating",
+    "timestamp": "2025-11-11T21:34:16.480000",
+    "rating": 3
+  },
+  {
+    "_id": "6913abd84f29131bb606856e",
+    "user_id": "6913abc74f29131bb606850b",
+    "product_id": "6913abc74f29131bb606850c",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:16.728000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd84f29131bb606856f",
+    "user_id": "6913abc74f29131bb606850b",
+    "product_id": "6913abcb4f29131bb6068522",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:16.933000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd94f29131bb6068570",
+    "user_id": "6913abc74f29131bb606850b",
+    "product_id": "6913abc74f29131bb606850d",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:17.139000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd94f29131bb6068571",
+    "user_id": "6913abc74f29131bb606850b",
+    "product_id": "6913abca4f29131bb6068520",
+    "interaction_type": "like",
+    "timestamp": "2025-11-11T21:34:17.344000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd94f29131bb6068572",
+    "user_id": "6913abc74f29131bb606850b",
+    "product_id": "6913abc94f29131bb6068519",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:17.548000",
+    "rating": null
+  },
+  {
+    "_id": "6913abd94f29131bb6068573",
+    "user_id": "6913abc74f29131bb606850b",
+    "product_id": "6913abc84f29131bb6068512",
+    "interaction_type": "view",
+    "timestamp": "2025-11-11T21:34:17.753000",
+    "rating": null
+  },
+  {
+    "_id": "6913ac8823c7b1a87bda8a9d",
+    "user_id": "6913abc24f29131bb6068503",
+    "product_id": "6913abc74f29131bb606850e",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-11T21:37:12.146000"
+  },
+  {
+    "_id": "6913b6a52bf8ee7451bdf9a3",
+    "user_id": "6913abc24f29131bb6068503",
+    "product_id": "6913b6962bf8ee7451bdf9a2",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-11T22:20:21.323000"
+  },
+  {
+    "_id": "6913b7a32bf8ee7451bdf9a4",
+    "user_id": "6913abc24f29131bb6068503",
+    "product_id": "6913abc84f29131bb606850f",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-11T22:24:35.796000"
+  },
+  {
+    "_id": "6913cd1658cadccb2a4bc380",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc74f29131bb606850c",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-11T23:56:06.855000"
+  },
+  {
+    "_id": "6913cd1958cadccb2a4bc381",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc74f29131bb606850c",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-11T23:56:09.357000"
+  },
+  {
+    "_id": "6913cd1b58cadccb2a4bc382",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc74f29131bb606850c",
+    "interaction_type": "rating",
+    "rating": 5,
+    "timestamp": "2025-11-11T23:56:11.862000"
+  },
+  {
+    "_id": "6913d0949785cc94c895d7a8",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc84f29131bb6068513",
+    "interaction_type": "rating",
+    "rating": 4,
+    "timestamp": "2025-11-12T00:11:00.682000"
+  },
+  {
+    "_id": "6913d0979785cc94c895d7a9",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc94f29131bb606851b",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:03.236000"
+  },
+  {
+    "_id": "6913d0999785cc94c895d7aa",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc84f29131bb6068514",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:05.885000"
+  },
+  {
+    "_id": "6913d09c9785cc94c895d7ab",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abca4f29131bb6068520",
+    "interaction_type": "rating",
+    "rating": 5,
+    "timestamp": "2025-11-12T00:11:08.480000"
+  },
+  {
+    "_id": "6913d09f9785cc94c895d7ac",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abca4f29131bb6068520",
+    "interaction_type": "rating",
+    "rating": 4,
+    "timestamp": "2025-11-12T00:11:11.081000"
+  },
+  {
+    "_id": "6913d0a19785cc94c895d7ad",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc84f29131bb6068513",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:13.667000"
+  },
+  {
+    "_id": "6913d0a49785cc94c895d7ae",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc84f29131bb6068511",
+    "interaction_type": "rating",
+    "rating": 5,
+    "timestamp": "2025-11-12T00:11:16.243000"
+  },
+  {
+    "_id": "6913d0a69785cc94c895d7af",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abca4f29131bb6068520",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:18.870000"
+  },
+  {
+    "_id": "6913d0a99785cc94c895d7b0",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc84f29131bb6068511",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:21.553000"
+  },
+  {
+    "_id": "6913d0ac9785cc94c895d7b1",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc94f29131bb606851b",
+    "interaction_type": "rating",
+    "rating": 5,
+    "timestamp": "2025-11-12T00:11:24.215000"
+  },
+  {
+    "_id": "6913d0ae9785cc94c895d7b2",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc84f29131bb6068514",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:26.878000"
+  },
+  {
+    "_id": "6913d0b19785cc94c895d7b3",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc94f29131bb6068515",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:29.540000"
+  },
+  {
+    "_id": "6913d0b49785cc94c895d7b4",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc94f29131bb6068519",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:32.203000"
+  },
+  {
+    "_id": "6913d0b69785cc94c895d7b5",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc84f29131bb6068511",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:34.865000"
+  },
+  {
+    "_id": "6913d0b99785cc94c895d7b6",
+    "user_id": "6913abc24f29131bb6068504",
+    "product_id": "6913abc94f29131bb6068519",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:37.527000"
+  },
+  {
+    "_id": "6913d0c19785cc94c895d7b7",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc84f29131bb6068512",
+    "interaction_type": "rating",
+    "rating": 4,
+    "timestamp": "2025-11-12T00:11:45.192000"
+  },
+  {
+    "_id": "6913d0c39785cc94c895d7b8",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913cd0f58cadccb2a4bc37f",
+    "interaction_type": "rating",
+    "rating": 5,
+    "timestamp": "2025-11-12T00:11:47.871000"
+  },
+  {
+    "_id": "6913d0c69785cc94c895d7b9",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc94f29131bb6068517",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:50.533000"
+  },
+  {
+    "_id": "6913d0c99785cc94c895d7ba",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc94f29131bb606851b",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:53.195000"
+  },
+  {
+    "_id": "6913d0cb9785cc94c895d7bb",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc94f29131bb6068519",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:55.858000"
+  },
+  {
+    "_id": "6913d0ce9785cc94c895d7bc",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abca4f29131bb606851e",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:11:58.521000"
+  },
+  {
+    "_id": "6913d0d19785cc94c895d7bd",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc84f29131bb606850f",
+    "interaction_type": "rating",
+    "rating": 5,
+    "timestamp": "2025-11-12T00:12:01.132000"
+  },
+  {
+    "_id": "6913d0d39785cc94c895d7be",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc94f29131bb6068515",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:03.743000"
+  },
+  {
+    "_id": "6913d0d69785cc94c895d7bf",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abcb4f29131bb6068523",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:06.406000"
+  },
+  {
+    "_id": "6913d0d99785cc94c895d7c0",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abcb4f29131bb6068524",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:09.068000"
+  },
+  {
+    "_id": "6913d0db9785cc94c895d7c1",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc94f29131bb606851b",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:11.730000"
+  },
+  {
+    "_id": "6913d0de9785cc94c895d7c2",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abc94f29131bb606851b",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:14.393000"
+  },
+  {
+    "_id": "6913d0e19785cc94c895d7c3",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913cd0f58cadccb2a4bc37f",
+    "interaction_type": "rating",
+    "rating": 4,
+    "timestamp": "2025-11-12T00:12:17.055000"
+  },
+  {
+    "_id": "6913d0e39785cc94c895d7c4",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abcb4f29131bb6068523",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:19.718000"
+  },
+  {
+    "_id": "6913d0e69785cc94c895d7c5",
+    "user_id": "6913abc44f29131bb6068506",
+    "product_id": "6913abcb4f29131bb6068523",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:22.380000"
+  },
+  {
+    "_id": "6913d0ee9785cc94c895d7c6",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abca4f29131bb6068520",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:30.061000"
+  },
+  {
+    "_id": "6913d0f09785cc94c895d7c7",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abca4f29131bb606851d",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:32.673000"
+  },
+  {
+    "_id": "6913d0f39785cc94c895d7c8",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc94f29131bb6068516",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:35.387000"
+  },
+  {
+    "_id": "6913d0f69785cc94c895d7c9",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc84f29131bb6068513",
+    "interaction_type": "rating",
+    "rating": 4,
+    "timestamp": "2025-11-12T00:12:38.048000"
+  },
+  {
+    "_id": "6913d0f89785cc94c895d7ca",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc94f29131bb6068515",
+    "interaction_type": "rating",
+    "rating": 4,
+    "timestamp": "2025-11-12T00:12:40.661000"
+  },
+  {
+    "_id": "6913d0fb9785cc94c895d7cb",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc94f29131bb6068516",
+    "interaction_type": "rating",
+    "rating": 5,
+    "timestamp": "2025-11-12T00:12:43.221000"
+  },
+  {
+    "_id": "6913d0fd9785cc94c895d7cc",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc94f29131bb6068516",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:45.831000"
+  },
+  {
+    "_id": "6913d1009785cc94c895d7cd",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc94f29131bb6068516",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:48.493000"
+  },
+  {
+    "_id": "6913d1039785cc94c895d7ce",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc94f29131bb6068516",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:51.157000"
+  },
+  {
+    "_id": "6913d1059785cc94c895d7cf",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc84f29131bb6068511",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:53.819000"
+  },
+  {
+    "_id": "6913d1089785cc94c895d7d0",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc94f29131bb6068516",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:56.481000"
+  },
+  {
+    "_id": "6913d10b9785cc94c895d7d1",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abcb4f29131bb6068523",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:12:59.144000"
+  },
+  {
+    "_id": "6913d10d9785cc94c895d7d2",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc94f29131bb6068516",
+    "interaction_type": "view",
+    "rating": null,
+    "timestamp": "2025-11-12T00:13:01.806000"
+  },
+  {
+    "_id": "6913d1109785cc94c895d7d3",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc84f29131bb6068513",
+    "interaction_type": "like",
+    "rating": null,
+    "timestamp": "2025-11-12T00:13:04.468000"
+  },
+  {
+    "_id": "6913d1139785cc94c895d7d4",
+    "user_id": "6913abc44f29131bb6068507",
+    "product_id": "6913abc84f29131bb606850f",
+    "interaction_type": "rating",
+    "rating": 2,
+    "timestamp": "2025-11-12T00:13:07.131000"
+  }
+]

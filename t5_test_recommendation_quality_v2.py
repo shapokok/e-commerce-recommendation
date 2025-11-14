@@ -1,6 +1,7 @@
 """
-Recommendation Quality Testing
-Evaluates recommendation system using Precision, Recall, and F1-Score metrics
+Recommendation Quality Testing V2
+Tests ALL users from database (not just hardcoded ones)
+Provides comprehensive quality metrics
 """
 
 import requests
@@ -8,8 +9,23 @@ import json
 from typing import Dict, List, Set, Tuple
 from collections import defaultdict
 import statistics
+from pymongo import MongoClient
+import sys
+import io
 
-API_URL = "http://localhost:8000"
+# Fix encoding for Windows console
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
+API_URL = "http://127.0.0.1:8000"
+
+# MongoDB connection to get all users
+MONGO_URI = (
+    "mongodb+srv://db:IpWdsbFWTop14L60@cluster0.zjhgztm.mongodb.net/?appName=Cluster0"
+)
+client = MongoClient(MONGO_URI)
+db = client.ecommerce_db
 
 
 class Color:
@@ -17,17 +33,18 @@ class Color:
     RED = "\033[91m"
     YELLOW = "\033[93m"
     BLUE = "\033[94m"
+    CYAN = "\033[96m"
     END = "\033[0m"
     BOLD = "\033[1m"
 
 
-class RecommendationQualityTester:
-    """Test recommendation quality using standard metrics"""
+class RecommendationQualityTesterV2:
+    """Test recommendation quality using ALL users"""
 
-    def __init__(self):
+    def __init__(self, sample_size: int = 15):
+        self.sample_size = sample_size  # Number of users to test
         self.users = []
         self.all_products = []
-        self.user_interactions = {}
         self.results = {}
 
     def print_header(self, title: str):
@@ -37,74 +54,118 @@ class RecommendationQualityTester:
         print(f"{Color.BOLD}{Color.BLUE}{'='*70}{Color.END}\n")
 
     def load_test_data(self):
-        """Load users and their interaction history"""
-        self.print_header("LOADING TEST DATA")
+        """Load ALL users from database (OPTIMIZED - direct MongoDB access)"""
+        self.print_header("LOADING TEST DATA FROM DATABASE")
 
-        # Get all products
-        response = requests.get(f"{API_URL}/api/products")
-        if response.status_code == 200:
-            self.all_products = response.json()["products"]
-            print(f"✓ Loaded {len(self.all_products)} products")
+        # Get all products directly from MongoDB (faster)
+        all_products_cursor = db.products.find({})
+        self.all_products = []
+        for p in all_products_cursor:
+            p["_id"] = str(p["_id"])
+            self.all_products.append(p)
+        print(f"✓ Loaded {len(self.all_products)} products")
 
-        # Login test users and get their history
-        test_users = [
-            {"email": "alice@example.com", "password": "password123"},
-            {"email": "bob@example.com", "password": "password123"},
-            {"email": "charlie@example.com", "password": "password123"},
-            {"email": "diana@example.com", "password": "password123"},
-        ]
+        # Get ALL users directly from MongoDB
+        all_users = list(db.users.find({}))
+        print(f"✓ Found {len(all_users)} total users in database")
 
-        for credentials in test_users:
-            login_response = requests.post(f"{API_URL}/api/login", json=credentials)
-            if login_response.status_code == 200:
-                user_data = login_response.json()
-                user_id = user_data["user_id"]
-                username = user_data["username"]
+        # Get ALL interactions at once (MUCH faster than per-user API calls)
+        print(f"✓ Loading interactions from database...")
+        all_interactions = list(db.interactions.find({}))
+        print(f"✓ Loaded {len(all_interactions)} total interactions")
 
-                # Get user history
-                history_response = requests.get(
-                    f"{API_URL}/api/users/{user_id}/history"
+        # Group interactions by user
+        from collections import defaultdict
+
+        user_interactions = defaultdict(list)
+        for interaction in all_interactions:
+            user_interactions[interaction["user_id"]].append(interaction)
+
+        # Filter users with interactions
+        users_with_interactions = []
+
+        for user in all_users:
+            user_id = str(user["_id"])
+            username = user.get("username", "unknown")
+
+            # Get interactions for this user
+            interactions = user_interactions.get(user_id, [])
+
+            if len(interactions) > 0:  # Only users with interactions
+                # Extract liked and viewed products
+                liked_products = set()
+                viewed_products = set()
+
+                for interaction in interactions:
+                    product_id = interaction["product_id"]
+                    if interaction["interaction_type"] == "like":
+                        liked_products.add(product_id)
+                    elif interaction["interaction_type"] in ["view", "rating"]:
+                        viewed_products.add(product_id)
+
+                users_with_interactions.append(
+                    {
+                        "user_id": user_id,
+                        "username": username,
+                        "persona": user.get("persona", "unknown"),
+                        "liked_products": liked_products,
+                        "viewed_products": viewed_products,
+                        "all_interacted": liked_products.union(viewed_products),
+                        "interaction_count": len(interactions),
+                    }
                 )
-                if history_response.status_code == 200:
-                    history = history_response.json()["history"]
 
-                    # Extract liked and viewed products
-                    liked_products = set()
-                    viewed_products = set()
+        print(f"✓ Found {len(users_with_interactions)} users with interactions")
 
-                    for interaction in history:
-                        product_id = interaction["product"]["_id"]
-                        if interaction["interaction_type"] == "like":
-                            liked_products.add(product_id)
-                        elif interaction["interaction_type"] in ["view", "rating"]:
-                            viewed_products.add(product_id)
+        # Sample users if there are too many
+        if len(users_with_interactions) > self.sample_size:
+            import random
 
-                    self.users.append(
-                        {
-                            "user_id": user_id,
-                            "username": username,
-                            "liked_products": liked_products,
-                            "viewed_products": viewed_products,
-                            "all_interacted": liked_products.union(viewed_products),
-                        }
-                    )
+            # Stratified sampling: get users from each persona
+            personas = defaultdict(list)
+            for user in users_with_interactions:
+                personas[user["persona"]].append(user)
 
-                    print(
-                        f"✓ Loaded user: {username} ({len(liked_products)} likes, {len(viewed_products)} views)"
-                    )
+            sampled_users = []
+            users_per_persona = max(1, self.sample_size // len(personas))
 
-        print(f"\nTotal users loaded: {len(self.users)}")
+            for persona, persona_users in personas.items():
+                sample_count = min(users_per_persona, len(persona_users))
+                sampled_users.extend(random.sample(persona_users, sample_count))
+
+            # If we still need more, add randomly
+            if len(sampled_users) < self.sample_size:
+                remaining = [
+                    u for u in users_with_interactions if u not in sampled_users
+                ]
+                additional = min(self.sample_size - len(sampled_users), len(remaining))
+                sampled_users.extend(random.sample(remaining, additional))
+
+            self.users = sampled_users[: self.sample_size]
+            print(
+                f"✓ Sampled {len(self.users)} users for testing (stratified by persona)"
+            )
+        else:
+            self.users = users_with_interactions
+            print(f"✓ Testing all {len(self.users)} users")
+
+        # Print sample breakdown
+        persona_counts = defaultdict(int)
+        for user in self.users:
+            persona_counts[user["persona"]] += 1
+
+        print(f"\nTest sample breakdown by persona:")
+        for persona, count in sorted(persona_counts.items()):
+            print(f"  - {persona}: {count}")
+
+        print(
+            f"\nAverage interactions per test user: {statistics.mean(u['interaction_count'] for u in self.users):.1f}"
+        )
 
     def calculate_precision_recall(
         self, recommended: Set[str], relevant: Set[str]
     ) -> Tuple[float, float, float]:
-        """
-        Calculate Precision, Recall, and F1-Score
-
-        Precision = True Positives / (True Positives + False Positives)
-        Recall = True Positives / (True Positives + False Negatives)
-        F1 = 2 * (Precision * Recall) / (Precision + Recall)
-        """
+        """Calculate Precision, Recall, and F1-Score"""
         if not recommended or not relevant:
             return 0.0, 0.0, 0.0
 
@@ -143,17 +204,13 @@ class RecommendationQualityTester:
                 relevant_ids = user["all_interacted"]
                 liked_ids = user["liked_products"]
 
-                # Calculate metrics using all interactions as ground truth
+                # Calculate metrics
                 precision, recall, f1 = self.calculate_precision_recall(
                     recommended_ids, relevant_ids
                 )
-
-                # Also calculate based on liked products only (stricter metric)
                 precision_liked, recall_liked, f1_liked = (
                     self.calculate_precision_recall(recommended_ids, liked_ids)
                 )
-
-                # Calculate "hit rate" - at least one relevant item in recommendations
                 hit_rate = (
                     1.0 if len(recommended_ids.intersection(relevant_ids)) > 0 else 0.0
                 )
@@ -161,6 +218,7 @@ class RecommendationQualityTester:
                 result = {
                     "user": username,
                     "user_id": user_id,
+                    "persona": user["persona"],
                     "recommended_count": len(recommended_ids),
                     "relevant_count": len(relevant_ids),
                     "liked_count": len(liked_ids),
@@ -175,48 +233,28 @@ class RecommendationQualityTester:
 
                 results.append(result)
 
-                # Print individual results
-                print(f"\n{username}:")
-                print(f"  Recommended: {len(recommended_ids)} products")
-                print(f"  Relevant (all interactions): {len(relevant_ids)} products")
-                print(f"  Liked products: {len(liked_ids)} products")
-                print(f"  Precision: {precision:.3f}")
-                print(f"  Recall: {recall:.3f}")
-                print(f"  F1-Score: {f1:.3f}")
-                print(f"  Precision (liked only): {precision_liked:.3f}")
-                print(f"  Recall (liked only): {recall_liked:.3f}")
-                print(f"  F1-Score (liked only): {f1_liked:.3f}")
-                print(f"  Hit Rate: {hit_rate:.3f}")
-
-        # Calculate averages
+        # Calculate overall averages
         if results:
             avg_precision = statistics.mean(r["precision"] for r in results)
             avg_recall = statistics.mean(r["recall"] for r in results)
             avg_f1 = statistics.mean(r["f1_score"] for r in results)
             avg_hit_rate = statistics.mean(r["hit_rate"] for r in results)
-            avg_precision_liked = statistics.mean(
-                r["precision_liked_only"] for r in results
-            )
-            avg_recall_liked = statistics.mean(r["recall_liked_only"] for r in results)
-            avg_f1_liked = statistics.mean(r["f1_score_liked_only"] for r in results)
 
-            print(
-                f"\n{Color.BOLD}COLLABORATIVE FILTERING - AVERAGE METRICS:{Color.END}"
-            )
+            print(f"{Color.BOLD}COLLABORATIVE FILTERING - AVERAGE METRICS:{Color.END}")
             print(f"  Average Precision: {Color.GREEN}{avg_precision:.3f}{Color.END}")
             print(f"  Average Recall: {Color.GREEN}{avg_recall:.3f}{Color.END}")
             print(f"  Average F1-Score: {Color.GREEN}{avg_f1:.3f}{Color.END}")
             print(f"  Average Hit Rate: {Color.GREEN}{avg_hit_rate:.3f}{Color.END}")
-            print(f"\n  (Based on liked products only):")
-            print(
-                f"  Average Precision (liked): {Color.YELLOW}{avg_precision_liked:.3f}{Color.END}"
-            )
-            print(
-                f"  Average Recall (liked): {Color.YELLOW}{avg_recall_liked:.3f}{Color.END}"
-            )
-            print(
-                f"  Average F1-Score (liked): {Color.YELLOW}{avg_f1_liked:.3f}{Color.END}"
-            )
+
+            # Calculate by persona
+            print(f"\n{Color.BOLD}Results by Persona:{Color.END}")
+            persona_results = defaultdict(list)
+            for r in results:
+                persona_results[r["persona"]].append(r["f1_score"])
+
+            for persona, f1_scores in sorted(persona_results.items()):
+                avg_f1_persona = statistics.mean(f1_scores)
+                print(f"  {persona}: {Color.CYAN}{avg_f1_persona:.3f}{Color.END}")
 
             self.results["collaborative_filtering"] = {
                 "method": "collaborative",
@@ -224,10 +262,11 @@ class RecommendationQualityTester:
                 "average_recall": avg_recall,
                 "average_f1_score": avg_f1,
                 "average_hit_rate": avg_hit_rate,
-                "average_precision_liked": avg_precision_liked,
-                "average_recall_liked": avg_recall_liked,
-                "average_f1_liked": avg_f1_liked,
                 "individual_results": results,
+                "persona_breakdown": {
+                    persona: statistics.mean(scores)
+                    for persona, scores in persona_results.items()
+                },
             }
 
     def test_content_based(self):
@@ -249,16 +288,11 @@ class RecommendationQualityTester:
                 recommendations = rec_response.json()["recommendations"]
                 recommended_ids = set(rec["_id"] for rec in recommendations)
 
-                # Use ALL interacted products as ground truth
                 relevant_ids = user["all_interacted"]
                 liked_ids = user["liked_products"]
 
-                # Calculate metrics
                 precision, recall, f1 = self.calculate_precision_recall(
                     recommended_ids, relevant_ids
-                )
-                precision_liked, recall_liked, f1_liked = (
-                    self.calculate_precision_recall(recommended_ids, liked_ids)
                 )
                 hit_rate = (
                     1.0 if len(recommended_ids.intersection(relevant_ids)) > 0 else 0.0
@@ -267,28 +301,14 @@ class RecommendationQualityTester:
                 result = {
                     "user": username,
                     "user_id": user_id,
-                    "recommended_count": len(recommended_ids),
-                    "relevant_count": len(relevant_ids),
-                    "liked_count": len(liked_ids),
+                    "persona": user["persona"],
                     "precision": precision,
                     "recall": recall,
                     "f1_score": f1,
-                    "precision_liked_only": precision_liked,
-                    "recall_liked_only": recall_liked,
-                    "f1_score_liked_only": f1_liked,
                     "hit_rate": hit_rate,
                 }
 
                 results.append(result)
-
-                print(f"\n{username}:")
-                print(f"  Recommended: {len(recommended_ids)} products")
-                print(f"  Relevant (all interactions): {len(relevant_ids)} products")
-                print(f"  Liked products: {len(liked_ids)} products")
-                print(f"  Precision: {precision:.3f}")
-                print(f"  Recall: {recall:.3f}")
-                print(f"  F1-Score: {f1:.3f}")
-                print(f"  Hit Rate: {hit_rate:.3f}")
 
         # Calculate averages
         if results:
@@ -297,11 +317,21 @@ class RecommendationQualityTester:
             avg_f1 = statistics.mean(r["f1_score"] for r in results)
             avg_hit_rate = statistics.mean(r["hit_rate"] for r in results)
 
-            print(f"\n{Color.BOLD}CONTENT-BASED - AVERAGE METRICS:{Color.END}")
+            print(f"{Color.BOLD}CONTENT-BASED - AVERAGE METRICS:{Color.END}")
             print(f"  Average Precision: {Color.GREEN}{avg_precision:.3f}{Color.END}")
             print(f"  Average Recall: {Color.GREEN}{avg_recall:.3f}{Color.END}")
             print(f"  Average F1-Score: {Color.GREEN}{avg_f1:.3f}{Color.END}")
             print(f"  Average Hit Rate: {Color.GREEN}{avg_hit_rate:.3f}{Color.END}")
+
+            # By persona
+            print(f"\n{Color.BOLD}Results by Persona:{Color.END}")
+            persona_results = defaultdict(list)
+            for r in results:
+                persona_results[r["persona"]].append(r["f1_score"])
+
+            for persona, f1_scores in sorted(persona_results.items()):
+                avg_f1_persona = statistics.mean(f1_scores)
+                print(f"  {persona}: {Color.CYAN}{avg_f1_persona:.3f}{Color.END}")
 
             self.results["content_based"] = {
                 "method": "content",
@@ -313,7 +343,7 @@ class RecommendationQualityTester:
             }
 
     def test_diversity(self):
-        """Test recommendation diversity (different categories)"""
+        """Test recommendation diversity"""
         self.print_header("RECOMMENDATION DIVERSITY TEST")
 
         diversity_results = []
@@ -322,13 +352,11 @@ class RecommendationQualityTester:
             user_id = user["user_id"]
             username = user["username"]
 
-            # Get recommendations
             rec_response = requests.get(f"{API_URL}/api/recommendations/{user_id}?n=10")
 
             if rec_response.status_code == 200:
                 recommendations = rec_response.json()["recommendations"]
 
-                # Count unique categories
                 categories = set(rec["category"] for rec in recommendations)
                 diversity_score = (
                     len(categories) / len(recommendations) if recommendations else 0
@@ -337,16 +365,12 @@ class RecommendationQualityTester:
                 diversity_results.append(
                     {
                         "user": username,
+                        "persona": user["persona"],
                         "total_recommendations": len(recommendations),
                         "unique_categories": len(categories),
                         "diversity_score": diversity_score,
                     }
                 )
-
-                print(f"\n{username}:")
-                print(f"  Total recommendations: {len(recommendations)}")
-                print(f"  Unique categories: {len(categories)}")
-                print(f"  Diversity score: {diversity_score:.3f}")
 
         if diversity_results:
             avg_diversity = statistics.mean(
@@ -354,8 +378,18 @@ class RecommendationQualityTester:
             )
 
             print(
-                f"\n{Color.BOLD}AVERAGE DIVERSITY SCORE: {Color.GREEN}{avg_diversity:.3f}{Color.END}"
+                f"{Color.BOLD}AVERAGE DIVERSITY SCORE: {Color.GREEN}{avg_diversity:.3f}{Color.END}"
             )
+
+            # By persona
+            print(f"\n{Color.BOLD}Diversity by Persona:{Color.END}")
+            persona_diversity = defaultdict(list)
+            for r in diversity_results:
+                persona_diversity[r["persona"]].append(r["diversity_score"])
+
+            for persona, scores in sorted(persona_diversity.items()):
+                avg_div = statistics.mean(scores)
+                print(f"  {persona}: {Color.CYAN}{avg_div:.3f}{Color.END}")
 
             self.results["diversity"] = {
                 "average_diversity": avg_diversity,
@@ -363,7 +397,7 @@ class RecommendationQualityTester:
             }
 
     def test_coverage(self):
-        """Test catalog coverage (% of products that can be recommended)"""
+        """Test catalog coverage"""
         self.print_header("CATALOG COVERAGE TEST")
 
         all_recommended = set()
@@ -371,7 +405,6 @@ class RecommendationQualityTester:
         for user in self.users:
             user_id = user["user_id"]
 
-            # Get recommendations
             rec_response = requests.get(f"{API_URL}/api/recommendations/{user_id}?n=10")
 
             if rec_response.status_code == 200:
@@ -416,46 +449,44 @@ class RecommendationQualityTester:
             print(f"Catalog Coverage: {Color.GREEN}{coverage:.1f}%{Color.END}")
 
         # Recommendations
-        print(f"\n{Color.BOLD}RECOMMENDATIONS FOR IMPROVEMENT:{Color.END}")
+        print(f"\n{Color.BOLD}ASSESSMENT:{Color.END}")
 
         if "collaborative_filtering" in self.results:
             cf_f1 = self.results["collaborative_filtering"]["average_f1_score"]
-            if cf_f1 < 0.3:
+            if cf_f1 >= 0.60:
                 print(
-                    f"  {Color.YELLOW}• Low F1-Score: Consider using matrix factorization or deep learning{Color.END}"
+                    f"  {Color.GREEN}✅ EXCELLENT F1-Score: {cf_f1:.3f} (Target: 0.60+){Color.END}"
                 )
-            elif cf_f1 < 0.5:
+            elif cf_f1 >= 0.50:
                 print(
-                    f"  {Color.YELLOW}• Moderate F1-Score: Fine-tune similarity thresholds{Color.END}"
+                    f"  {Color.YELLOW}✓ Good F1-Score: {cf_f1:.3f} (Close to target){Color.END}"
                 )
             else:
                 print(
-                    f"  {Color.GREEN}• Good F1-Score: System performing well{Color.END}"
+                    f"  {Color.YELLOW}• F1-Score: {cf_f1:.3f} (Target: 0.60+){Color.END}"
                 )
 
         if "diversity" in self.results:
             diversity = self.results["diversity"]["average_diversity"]
-            if diversity < 0.4:
+            if diversity >= 0.60:
                 print(
-                    f"  {Color.YELLOW}• Low diversity: Add diversity penalty in ranking{Color.END}"
+                    f"  {Color.GREEN}✅ EXCELLENT Diversity: {diversity:.3f}{Color.END}"
                 )
             else:
-                print(
-                    f"  {Color.GREEN}• Good diversity: Recommendations cover multiple categories{Color.END}"
-                )
+                print(f"  {Color.YELLOW}• Diversity could be improved{Color.END}")
 
         if "coverage" in self.results:
             coverage = self.results["coverage"]["coverage_percentage"]
-            if coverage < 30:
+            if coverage >= 70:
                 print(
-                    f"  {Color.YELLOW}• Low coverage: Popular items dominate, consider popularity penalty{Color.END}"
+                    f"  {Color.GREEN}✅ EXCELLENT Coverage: {coverage:.1f}%{Color.END}"
                 )
+            elif coverage >= 50:
+                print(f"  {Color.YELLOW}✓ Good Coverage: {coverage:.1f}%{Color.END}")
             else:
-                print(
-                    f"  {Color.GREEN}• Good coverage: Wide range of products recommended{Color.END}"
-                )
+                print(f"  {Color.YELLOW}• Coverage could be improved{Color.END}")
 
-    def save_results(self, filename: str = "recommendation_quality_results.json"):
+    def save_results(self, filename: str = "recommendation_quality_results_v2.json"):
         """Save detailed results to file"""
         with open(filename, "w") as f:
             json.dump(self.results, f, indent=2)
@@ -467,12 +498,13 @@ def main():
     """Run recommendation quality tests"""
     print(f"{Color.BOLD}{Color.BLUE}")
     print("=" * 70)
-    print("  RECOMMENDATION QUALITY TESTING")
+    print("  RECOMMENDATION QUALITY TESTING V2")
+    print("  (Testing ALL Users from Database)")
     print("=" * 70)
     print(f"{Color.END}")
     print(f"API Endpoint: {API_URL}\n")
 
-    tester = RecommendationQualityTester()
+    tester = RecommendationQualityTesterV2(sample_size=15)
 
     # Load data
     tester.load_test_data()

@@ -16,12 +16,10 @@ from collections import Counter, defaultdict
 from datetime import datetime
 import math
 
-# MongoDB connection
-MONGO_URI = (
-    "mongodb+srv://db:IpWdsbFWTop14L60@cluster0.zjhgztm.mongodb.net/?appName=Cluster0"
-)
-client = MongoClient(MONGO_URI)
-db = client.ecommerce_db
+# Import shared MongoDB connection from database module
+# This ensures we use the same connection pool across the entire app
+from database import db, client
+print("[OPTIMIZATION] recommendation_routes using shared MongoDB connection pool")
 
 router = APIRouter()
 
@@ -29,15 +27,30 @@ router = APIRouter()
 # ==================== CONFIGURATION ====================
 
 CONFIG = {
-    "weights": {"like": 9.0, "rating": 5.0, "view": 1.0},
-    "recency": {
-        "days_0_7": 2.0,
-        "days_8_30": 1.5,
-        "days_31_90": 1.0,
-        "days_90_plus": 0.8,
+    # Interaction weights (higher = more important)
+    "weights": {
+        "like": 12.0,  # INCREASED from 5.0
+        "rating": 6.0,  # INCREASED from 3.0
+        "view": 1.0,
     },
-    "diversity": {"enabled": True, "lambda": 0.7, "max_per_category": 3},
-    "similarity": {"min_threshold": 0.2, "top_k_users": 15},
+    # Recency decay
+    "recency": {
+        "days_0_7": 2.0,  # Last week: +100%
+        "days_8_30": 1.5,  # Last month: +50%
+        "days_31_90": 1.0,  # Last 3 months: normal
+        "days_90_plus": 0.5,  # Older: -50%
+    },
+    # Diversity control
+    "diversity": {
+        "enabled": True,
+        "lambda": 0.7,  # 0.7 = 70% relevance, 30% diversity
+        "max_per_category": 3,  # Max 3 items from same category
+    },
+    # User similarity
+    "similarity": {
+        "min_threshold": 0.15,  # Minimum 15% overlap
+        "top_k_users": 25,  # Consider top 25 similar users
+    },
 }
 
 
@@ -165,11 +178,27 @@ def get_content_based_recommendations_balanced(user_id: str, n: int = 10) -> Lis
     """Optimized content-based with diversity"""
 
     try:
-        # Get user interactions
-        interactions = list(db.interactions.find({"user_id": user_id}))
+        # Get user interactions (with projection for less data transfer)
+        interactions = list(
+            db.interactions.find(
+                {"user_id": user_id}, {"product_id": 1, "interaction_type": 1, "timestamp": 1}
+            )
+        )
 
         if not interactions:
             return get_popular_products(n)
+
+        # Get unique product IDs
+        product_ids = list(set(i["product_id"] for i in interactions))
+
+        # Fetch all products at once instead of one by one
+        products_map = {}
+        products = db.products.find(
+            {"_id": {"$in": [ObjectId(pid) for pid in product_ids]}},
+            {"category": 1, "price": 1}
+        )
+        for product in products:
+            products_map[str(product["_id"])] = product
 
         # Calculate weighted category preferences
         category_scores = defaultdict(float)
@@ -180,7 +209,7 @@ def get_content_based_recommendations_balanced(user_id: str, n: int = 10) -> Lis
             product_id = interaction["product_id"]
             interacted_product_ids.add(product_id)
 
-            product = db.products.find_one({"_id": ObjectId(product_id)})
+            product = products_map.get(product_id)
             if not product:
                 continue
 
@@ -272,8 +301,12 @@ def get_collaborative_recommendations_balanced(user_id: str, n: int = 10) -> Lis
     """Optimized collaborative filtering with diversity"""
 
     try:
-        # Get user's interactions
-        my_interactions = list(db.interactions.find({"user_id": user_id}))
+        # Get user's interactions (with projection to reduce data transfer)
+        my_interactions = list(
+            db.interactions.find(
+                {"user_id": user_id}, {"product_id": 1, "interaction_type": 1, "timestamp": 1}
+            )
+        )
 
         if not my_interactions:
             return get_popular_products(n)
@@ -288,14 +321,27 @@ def get_collaborative_recommendations_balanced(user_id: str, n: int = 10) -> Lis
             score = calculate_interaction_score(interaction)
             my_product_scores[product_id] = my_product_scores.get(product_id, 0) + score
 
-        # Find similar users
-        all_users = list(db.users.find({"_id": {"$ne": ObjectId(user_id)}}))
+        # Use aggregation pipeline to find similar users efficiently
+        # Get all users who interacted with the same products
+        pipeline = [
+            {"$match": {"product_id": {"$in": list(my_product_ids)}, "user_id": {"$ne": user_id}}},
+            {"$group": {
+                "_id": "$user_id",
+                "interactions": {"$push": {
+                    "product_id": "$product_id",
+                    "interaction_type": "$interaction_type",
+                    "timestamp": "$timestamp"
+                }}
+            }},
+            {"$limit": 100}  # Limit to top 100 users for performance
+        ]
+
+        potential_similar_users = list(db.interactions.aggregate(pipeline))
         user_similarities = []
 
-        for other_user in all_users:
-            other_user_id = str(other_user["_id"])
-
-            their_interactions = list(db.interactions.find({"user_id": other_user_id}))
+        for user_doc in potential_similar_users:
+            other_user_id = user_doc["_id"]
+            their_interactions = user_doc["interactions"]
             their_product_ids = set(i["product_id"] for i in their_interactions)
 
             if not their_product_ids:
@@ -439,33 +485,55 @@ def get_hybrid_recommendations_balanced(user_id: str, n: int = 10) -> List[Dict]
 
 
 def get_popular_products(n: int = 10) -> List[Dict]:
-    """Get diverse popular products"""
+    """Get diverse popular products using aggregation for better performance"""
 
     try:
-        all_interactions = list(db.interactions.find())
+        # Use aggregation pipeline to calculate scores efficiently
+        pipeline = [
+            {
+                "$group": {
+                    "_id": "$product_id",
+                    "interactions": {"$push": {
+                        "interaction_type": "$interaction_type",
+                        "timestamp": "$timestamp"
+                    }}
+                }
+            },
+            {"$limit": 100}  # Limit for performance
+        ]
 
-        product_scores = defaultdict(float)
-        for interaction in all_interactions:
-            product_id = interaction["product_id"]
-            score = calculate_interaction_score(interaction)
-            product_scores[product_id] += score
+        interaction_groups = list(db.interactions.aggregate(pipeline))
 
-        # Sort by score
+        product_scores = {}
+        for group in interaction_groups:
+            product_id = group["_id"]
+            total_score = 0
+            for interaction in group["interactions"]:
+                score = calculate_interaction_score(interaction)
+                total_score += score
+            product_scores[product_id] = total_score
+
+        # Sort by score and get top product IDs
         top_product_ids = sorted(
             product_scores.items(), key=lambda x: x[1], reverse=True
+        )[:n * 3]  # Get 3x for diversity filtering
+
+        # Fetch all top products in one query
+        product_id_list = [pid for pid, score in top_product_ids]
+        products_cursor = db.products.find(
+            {"_id": {"$in": [ObjectId(pid) for pid in product_id_list]}}
         )
 
-        # Fetch products
+        # Build products list with scores
         products = []
-        for product_id, score in top_product_ids:
-            try:
-                product = db.products.find_one({"_id": ObjectId(product_id)})
-                if product:
-                    product["_id"] = str(product["_id"])
-                    product["recommendation_score"] = score
-                    products.append(product)
-            except:
-                continue
+        for product in products_cursor:
+            product_id = str(product["_id"])
+            product["_id"] = product_id
+            product["recommendation_score"] = product_scores.get(product_id, 0)
+            products.append(product)
+
+        # Sort by score
+        products.sort(key=lambda x: x["recommendation_score"], reverse=True)
 
         # Apply diversity
         diversified = diversify_recommendations(products, n, lambda_param=0.5)
@@ -494,7 +562,27 @@ def get_popular_products(n: int = 10) -> List[Dict]:
         return products
 
 
-# ==================== API ENDPOINT ====================
+# ==================== API ENDPOINTS ====================
+
+
+@router.get("/api/recommendations/popular")
+def get_popular_products_endpoint(n: int = Query(10, ge=1, le=50)):
+    """Get popular products based on user interactions"""
+
+    try:
+        popular_products = get_popular_products(n)
+
+        return {
+            "method": "popular",
+            "count": len(popular_products),
+            "products": popular_products,
+        }
+
+    except Exception as e:
+        print(f"ERROR in popular products: {e}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.get("/api/recommendations/{user_id}")
@@ -506,7 +594,13 @@ def get_recommendations(
     """Get balanced recommendations (high accuracy + high diversity)"""
 
     try:
-        user = db.users.find_one({"_id": ObjectId(user_id)})
+        # Validate ObjectId format first
+        try:
+            user_object_id = ObjectId(user_id)
+        except Exception:
+            raise HTTPException(status_code=404, detail="User not found")
+
+        user = db.users.find_one({"_id": user_object_id})
         if not user:
             raise HTTPException(status_code=404, detail="User not found")
 

@@ -1,0 +1,45 @@
+[
+  {
+    "_id": "6913aca623c7b1a87bda8a9f",
+    "user_id": "6913abc24f29131bb6068503",
+    "items": [
+      {
+        "product_id": "6913abc74f29131bb606850e",
+        "product_name": "Wireless Headphones",
+        "price": 249.99,
+        "quantity": 1,
+        "subtotal": 249.99
+      }
+    ],
+    "total": 249.99,
+    "shipping_address": "sad",
+    "payment_method": "cash",
+    "status": "confirmed",
+    "created_at": "2025-11-11T21:37:42.969000"
+  },
+  {
+    "_id": "6913b300386629679f6724ba",
+    "user_id": "6913abc24f29131bb6068503",
+    "items": [
+      {
+        "product_id": "6913abc84f29131bb6068511",
+        "product_name": "Python Programming Guide",
+        "price": 49.99,
+        "quantity": 1,
+        "subtotal": 49.99
+      },
+      {
+        "product_id": "6913abc84f29131bb606850f",
+        "product_name": "Smart Watch",
+        "price": 399.99,
+        "quantity": 1,
+        "subtotal": 399.99
+      }
+    ],
+    "total": 449.98,
+    "shipping_address": "da",
+    "payment_method": "cash",
+    "status": "confirmed",
+    "created_at": "2025-11-11T22:04:48.834000"
+  }
+]
